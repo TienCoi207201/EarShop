@@ -1,0 +1,21 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: aliceblue;
+}
+
+.footer-left{
+    margin-left: 30px;
+}
+
+.footer-right{
+    margin-right: 30px;
+}
+
+.link-footer{
+    cursor: pointer;
+}
+
+p{
+    font-size: 15px;
+}

@@ -1,0 +1,49 @@
+.contain{
+
+}
+
+.box{
+  background-color: pink;
+}
+
+.link-url{
+  font-size: 20px;
+}
+
+.item-top{
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.item{
+ border-radius: 10px;
+ border: 1px;
+ border-color: brown;
+ width: 34%;
+}
+
+.img-item{
+  width: 400px;
+  height: 250px;
+}
+
+.img-item-frame{
+  margin: 50px;
+}
+
+.img-item:hover{
+  transform: scale(1.1);
+  transition: 500ms ease-in-out;
+}
+
+.btn{
+  cursor: pointer;
+}
+
+.item-bot{
+  display: flex;
+  justify-content: space-between;
+
+}
+
