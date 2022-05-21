@@ -1,0 +1,7 @@
+.actions {
+    display: flex;
+}
+
+.actions .item {
+    margin-left:22px;
+}
