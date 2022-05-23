@@ -1,14 +1,17 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
-import './../components/Navbar/Navbar.css'
-import './../components/Footer/Footer.css'
-import './../screen/Blog.css'
+import Navbar from '../../components/Navbar/Navbar.jsx'
+import Footer from '../../components/Footer/Footer.jsx'
+import User from './../../image/logo.png'
+import Cart from './../../image/cart.png'
+import Logo from '../../image/logo.png'
+import './../../components/Navbar/Navbar'
+import './../../components/Footer/Footer.css'
+import './../Blog/Blog.css'
 
-const Blog = () => {
+const Blog = (props) => {
     return (
         <>
-        <Navbar />
+        <Navbar Logo={Logo} User={User} Cart={Cart}/>
         <div className="row">
             <div className="leftcolumn">
                 <div className="card">

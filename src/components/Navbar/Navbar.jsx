@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Navbar/Navbar.css'
-import Avatar from '../../image/avatar_1.png'
+import Blog from '../../pages/Blog/Blog';
+import { Link } from "react-router-dom";
 
 const Navbar = ({ Logo, products, User, Cart }) => {
     return (
