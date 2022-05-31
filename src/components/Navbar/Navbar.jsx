@@ -11,13 +11,13 @@ const Navbar = ({ Logo, products, User, Cart }) => {
             </a>
             <div className='menu'>
                 <div className='item'>
-                    <a href=''>Trang chủ</a>
+                    <Link to={'/'}>Trang chủ</Link>
                 </div>
                 <div className='item'>
                     <a href=''>Sản phẩm</a>
                 </div>
                 <div className='item'>
-                    <a href=''>Blog</a>
+                    <Link to={'/Blog'}>Blog</Link>
                 </div>
                 <div className='item'>
                     <a href=''>Liên hệ</a>
