@@ -1,4 +1,6 @@
 import React from 'react'
+import '../../App.css'
+
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import Anh10 from '../../image/JBL_Quantum400_Lifestyle1.png'
 import Anh11 from '../../image/JBL_TUNE220TWS_Lifestyle_black.png'
@@ -8,7 +10,8 @@ import Anh3 from '../../image/JBL_JR 310BT_Product Image_Detail_Skyblue.png'
 import Anh4 from '../../image/JBLHorizon_001_dvHAMaster.png'
 import { Link } from 'react-router-dom';
 
-const Blog = () => {
+
+const Contact = () => {
     return (
         <div>
             <header>
@@ -154,7 +157,7 @@ const Blog = () => {
                                 </li>
 
                                 <li><Link to={'/Blog'}>blog</Link></li>
-                                <li><a href="#">contact</a></li>
+                                <li><Link to={'/Contact'}>contact</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -162,72 +165,99 @@ const Blog = () => {
                 </div>
 
             </header>
-            <div className="section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2>latest blog</h2>
-                    </div>
-                    <div className="blog">
-                        <div className="blog-img">
-                            <img src={Anh10} alt="" />
-                        </div>
-                        <div className="blog-info">
-                            <div className="blog-title">
-                                Âm nhạc làm bạn cảm thấy hạnh phúc hơn
-                            </div>
-                            <div className="blog-preview">
-                                Nghiên cứu đã chứng minh rằng khi bạn nghe bài hát yêu thích, não của bạn sẽ giải phóng dopamine, một dạng dẫn truyền thần kinh. Valorie Salimpoor, một nhà thần kinh học tại trường Đại học McGill, đã tiến hành thử nghiệm trên 8 người yêu thích âm nhạc bằng cách tiêm một chất phóng xạ vào cơ thể họ, sau đó cho nghe bản nhạc mà họ yêu thích. Một máy PET dùng để quét các phản xạ thần kinh cho thấy rằng một lượng lớn dopamine đã được phóng ra, điều này cho thấy rằng họ có những cảm xúc hạnh phúc, thích thú và vui vẻ.
-                            </div>
-                            <button className="btn-flat btn-hover">read more</button>
+            <section class="ftco-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-5">
+                            <h2 class="heading-section">Liên hệ với chúng tôi</h2>
                         </div>
                     </div>
-                    <div className="blog row-revere">
-                        <div className="blog-img">
-                            <img src={Anh11} alt="" />
-                        </div>
-                        <div className="blog-info">
-                            <div className="blog-title">
-                                Âm nhạc giúp bạn có thêm nhiều động lực
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 col-md-12">
+                            <div class="wrapper">
+                                <div class="row no-gutters">
+                                    <div class="col-md-7 d-flex align-items-stretch">
+                                        <div class="contact-wrap w-100 p-md-5 p-4">
+                                            <h3 class="mb-4">Get in touch</h3>
+                                            <div id="form-message-warning" class="mb-4"></div>
+                                            <div id="form-message-success" class="mb-4">
+                                                Your message was sent, thank you!
+                                            </div>
+                                            <form method="POST" id="contactForm" name="contactForm">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <textarea name="message" class="form-control" id="message" cols="30" rows="7" placeholder="Message"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="submit" value="Send Message" class="btn btn-primary" />
+                                                            <div class="submitting"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 d-flex align-items-stretch">
+                                        <div class="info-wrap bg-primary w-100 p-lg-5 p-4">
+                                            <h3 class="mb-4 mt-md-4">Contact us</h3>
+                                            <div class="dbox w-100 d-flex align-items-start">
+                                                <div class="icon d-flex align-items-center justify-content-center">
+                                                    <span class="fa fa-map-marker"></span>
+                                                </div>
+                                                <div class="text pl-3">
+                                                    <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                                                </div>
+                                            </div>
+                                            <div class="dbox w-100 d-flex align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center">
+                                                    <span class="fa fa-phone"></span>
+                                                </div>
+                                                <div class="text pl-3">
+                                                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="dbox w-100 d-flex align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center">
+                                                    <span class="fa fa-paper-plane"></span>
+                                                </div>
+                                                <div class="text pl-3">
+                                                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="dbox w-100 d-flex align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center">
+                                                    <span class="fa fa-globe"></span>
+                                                </div>
+                                                <div class="text pl-3">
+                                                    <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="blog-preview">
-                                Marcelo Bigliassi cùng đồng nghiệp của ông đã nhận ra rằng các vận động viên khi nghe thể loại nhạc có tiết tấu nhanh hoặc chậm sẽ hoàn thành chặng đường 800m nhanh hơn so với các vận động viên nghe nhạc có tiết tấu bình thường hoặc không nghe nhạc. Nếu bạn muốn tham gia vào các hoạt động yêu cầu vận động mạnh thì hãy nghe nhạc để chúng truyền cảm hứng cho bạn nhé!
-                            </div>
-                            <button className="btn-flat btn-hover">read more</button>
                         </div>
-                    </div>
-                    <div className="blog">
-                        <div className="blog-img">
-                            <img src={Anh10} alt="" />
-                        </div>
-                        <div className="blog-info">
-                            <div className="blog-title">
-                                Âm nhạc làm giảm căng thẳng và cải thiện sức khỏe
-                            </div>
-                            <div className="blog-preview">
-                                Khi nghe những bài hát mà bạn yêu thích có thể làm giảm đi các hoóc-môn gây căng thẳng trong cơ thể, giúp cơ thể chống lại các triệu chứng gây căng thẳng kéo dài. Đây là một phần phát hiện quan trọng bởi căng thẳng chiếm 60% nguyên nhân gây ra tất cả các bệnh. Một nghiên cứu cho thấy rằng nếu mọi người tham gia sáng tác bằng các nhạc cụ hay ngồi hát cùng nhau, hệ thống miễn dịch của họ được thúc đẩy mạnh hơn so với việc chỉ ngồi yên lắng nghe.
-                            </div>
-                            <button className="btn-flat btn-hover">read more</button>
-                        </div>
-                    </div>
-                    <div className="blog row-revere">
-                        <div className="blog-img">
-                            <img src={Anh11} alt="" />
-                        </div>
-                        <div className="blog-info">
-                            <div className="blog-title">
-                                Âm nhạc giúp bạn ngủ ngon hơn
-                            </div>
-                            <div className="blog-preview">
-                                Hơn 30% người Mỹ thường bị mất ngủ. Một nghiên cứu cho thấy những sinh viên nghe nhạc cổ điển thư giãn trong 45 phút trước khi đi ngủ thường sẽ ngủ ngon hơn so với những người nghe audiobook hoặc không nghe gì cả. Nếu cảm thấy khó ngủ, hãy thử nghe một chút nhạc Bach hoặc nhạc Mozart trước khi đi ngủ nhé!
-                            </div>
-                            <button className="btn-flat btn-hover">read more</button>
-                        </div>
-                    </div>
-                    <div className="section-footer">
-                        <a href="#" className="btn-flat btn-hover">view all</a>
                     </div>
                 </div>
-            </div>
+            </section>
             <footer className="bg-second">
                 <div className="container">
                     <div className="row">
@@ -293,4 +323,4 @@ const Blog = () => {
     )
 }
 
-export default Blog
+export default Contact

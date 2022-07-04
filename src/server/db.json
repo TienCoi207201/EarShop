@@ -1,0 +1,17 @@
+{
+    "products": [
+      { "id": 1, 
+        "title": "Ảnh lỗi", 
+        "name": "JBL 01",
+        "oldPrice": "200",
+        "newPrice": "400",
+        "link1": "./../image/190402_E1_FW19_EarbudsWCase_S13_0033-1_1605x1605_BACK.png",
+        "link2": "./../image/190402_E1_FW19_EarbudsWCase_S13_0033-1_1605x1605_BACK.png"
+      
+    }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
