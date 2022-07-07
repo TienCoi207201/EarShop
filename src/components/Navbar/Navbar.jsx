@@ -3,13 +3,13 @@ import '../Navbar/Navbar.css'
 import Blog from '../../pages/Blog/Blog';
 import { Link } from "react-router-dom";
 
-const Navbar = ({ Logo, products, User, Cart }) => {
+const Navbar = () => {
     return (
         <>
         <header>
     
         <div class="mobile-menu bg-second">
-            <a href="#" class="mb-logo">ATShop</a>
+            <Link to={'/'} class="mb-logo">ATShop</Link>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -24,10 +24,10 @@ const Navbar = ({ Logo, products, User, Cart }) => {
                 <div class="top-header container">
                     <ul class="devided">
                         <li>
-                            <a href="#">+840123456789</a>
+                            <a href="#">+84345199196</a>
                         </li>
                         <li>
-                            <a href="#">atshop@mail.com</a>
+                            <a href="mailto:namtien9182@gmail.com">namtien9182@gmail.com</a>
                         </li>
                     </ul>
                     <ul class="devided">
@@ -73,10 +73,10 @@ const Navbar = ({ Logo, products, User, Cart }) => {
             <div class="bg-second">
                 <div class="bottom-header container">
                     <ul class="main-menu">
-                        <li><a href="#">home</a></li>
+                        <li><Link to={'/'}>home</Link></li>
                        
                         <li class="mega-dropdown">
-                            <a href="./products.html">Shop<i class='bx bxs-chevron-down'></i></a>
+                            <Link to={'/Products'}>Shop<i class='bx bxs-chevron-down'></i></Link>
                             <div class="mega-content">
                                 <div class="row">
                                     <div class="col-3 col-md-12">
@@ -149,8 +149,8 @@ const Navbar = ({ Logo, products, User, Cart }) => {
                             </div>
                         </li>
                      
-                        <li><a href="#">blog</a></li>
-                        <li><a href="#">contact</a></li>
+                        <li><Link to={'/Blog'}>blog</Link></li>
+                        <li><Link to={'/Contact'}>contact</Link></li>
                     </ul>
                 </div>
             </div>
