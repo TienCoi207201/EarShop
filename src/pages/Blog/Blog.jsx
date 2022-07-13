@@ -3,11 +3,7 @@ import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/
 import Navbar from '../../components/Navbar/Navbar';
 import Anh10 from '../../image/JBL_Quantum400_Lifestyle1.png'
 import Anh11 from '../../image/JBL_TUNE220TWS_Lifestyle_black.png'
-import Anh1 from '../../image/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png'
-import Anh2 from '../../image/JBL_LIVE650BTNC_Product Image_Folded_Black.webp'
-import Anh3 from '../../image/JBL_JR 310BT_Product Image_Detail_Skyblue.png'
-import Anh4 from '../../image/JBLHorizon_001_dvHAMaster.png'
-import { Link } from 'react-router-dom';
+
 
 const Blog = () => {
     return (
@@ -20,7 +16,7 @@ const Blog = () => {
                     </div>
                     <div className="blog">
                         <div className="blog-img">
-                            <img src={Anh10} alt="" />
+                            <img src={`${require("../../image/JBL_Quantum400_Lifestyle1.png")}`} alt="" />
                         </div>
                         <div className="blog-info">
                             <div className="blog-title">
@@ -34,7 +30,7 @@ const Blog = () => {
                     </div>
                     <div className="blog row-revere">
                         <div className="blog-img">
-                            <img src={Anh11} alt="" />
+                            <img src={`${require("../../image/JBL_Tune_125TWS_Lifestyle2.png")} `} alt="" />
                         </div>
                         <div className="blog-info">
                             <div className="blog-title">
@@ -48,7 +44,7 @@ const Blog = () => {
                     </div>
                     <div className="blog">
                         <div className="blog-img">
-                            <img src={Anh10} alt="" />
+                            <img src={`${require("../../image/JBL_Quantum400_Lifestyle1.png")}`} alt="" />
                         </div>
                         <div className="blog-info">
                             <div className="blog-title">
@@ -62,7 +58,7 @@ const Blog = () => {
                     </div>
                     <div className="blog row-revere">
                         <div className="blog-img">
-                            <img src={Anh11} alt="" />
+                            <img src={`${require("../../image/JBL_Tune_125TWS_Lifestyle2.png")}`} alt="" />
                         </div>
                         <div className="blog-info">
                             <div className="blog-title">
