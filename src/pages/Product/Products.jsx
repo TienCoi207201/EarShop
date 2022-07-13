@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import '../../App.css'
 import Navbar from '../../components/Navbar/Navbar'
+import VNDFormat from '../../untils/CurrencyFormat'
 import { FaBell, FaCartPlus, FaUser } from 'react-icons/fa'
 import axios from 'axios'
 
@@ -287,7 +288,7 @@ const Products = () => {
                                                 </div>
                                                 <div class="product-card-info">
                                                     <div class="product-btn">
-                                                        <a href="./product-detail.html" class="btn-flat btn-hover btn-shop-now">shop now</a>
+                                                        <Link to={`/Detail/${e.id}`} class="btn-flat btn-hover btn-shop-now">shop now</Link>
                                                         <button class="btn-flat btn-hover btn-cart-add">
                                                             <i class='bx bxs-cart-add'></i>
                                                         </button>
@@ -299,8 +300,8 @@ const Products = () => {
                                                         {e.name}
                                                     </div>
                                                     <div class="product-card-price">
-                                                        <span><del>{e.oldPrice}</del></span>
-                                                        <span class="curr-price">{e.newPrice}</span>
+                                                        <span><del>{VNDFormat(e.oldPrice)}</del></span>
+                                                        <span class="curr-price">{VNDFormat(e.newPrice)}</span>
                                                     </div>
                                                 </div>
                                             </div>

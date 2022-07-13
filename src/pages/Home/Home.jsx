@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import '../../App.css'
 import Navbar from '../../components/Navbar/Navbar';
+import VNDFormat from '../../untils/CurrencyFormat';
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom"
 
@@ -166,8 +167,8 @@ const Home = () => {
                                             {e.name}
                                         </div>
                                         <div className="product-card-price">
-                                            <span><del>{e.oldPrice}</del></span>
-                                            <span className="curr-price">{e.newPrice}</span>
+                                            <span><del>{VNDFormat(e.oldPrice)}</del></span>
+                                            <span className="curr-price">{VNDFormat(e.newPrice)}</span>
                                         </div>
                                     </div>
                                 </div>
