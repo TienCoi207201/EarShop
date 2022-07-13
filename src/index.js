@@ -7,6 +7,7 @@ import Home from './pages/Home/Home'
 import Blog from './pages/Blog/Blog';
 import Products from './pages/Product/Products';
 import Contact from './pages/Contact/Contact';
+import Detail from './pages/Product-detail/Product-detail'
 
 // import reportWebVitals from './reportWebVitals';
 
@@ -19,6 +20,7 @@ root.render(
       <Route path="/Products" element={<Products/>} />
       <Route path='/Blog' element={<Blog/>}/>
       <Route path='/Contact' element={<Contact/>}/>
+      <Route path='/Detail/:DetailId' element={<Detail/>}/>
       {/* <Route path="invoices" element={<Invoices />} /> */}
     </Routes>
   </BrowserRouter>
