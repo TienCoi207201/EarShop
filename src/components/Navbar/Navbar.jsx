@@ -6,9 +6,8 @@ const Navbar = () => {
     return (
         <>
         <header>
-    
         <div class="mobile-menu bg-second">
-            <Link to={'/'} class="mb-logo">ATShop</Link>
+            <Link to={'/'} class="mb-logo">EarShop</Link>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
@@ -31,7 +30,7 @@ const Navbar = () => {
                     </ul>
                     <ul class="devided">
                         <li class="dropdown">
-                            <a href="">USD</a>
+                            <Link to={'/New'}>USD</Link>
                             <i class='bx bxs-chevron-down'></i>
                             <ul class="dropdown-content">
                                 <li><a href="#">VND</a></li>
@@ -56,7 +55,7 @@ const Navbar = () => {
            
             <div class="bg-main">
                 <div class="mid-header container">
-                    <a href="#" class="logo">ATShop</a>
+                    <a href="#" class="logo">EarShop</a>
                     <div class="search">
                         <input type="text" placeholder="Search"/>
                         <i class='bx bx-search-alt'></i>
@@ -64,7 +63,7 @@ const Navbar = () => {
                     <ul class="user-menu">
                         <li><a href="#"><i class='bx bx-bell'></i></a></li>
                         <li><a href="#"><i class='bx bx-user-circle'></i></a></li>
-                        <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                        <li><Link to={'/Cart'}><i class='bx bx-cart'></i></Link></li>
                     </ul>
                 </div>
             </div>

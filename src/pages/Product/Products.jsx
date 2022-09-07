@@ -5,9 +5,13 @@ import Navbar from '../../components/Navbar/Navbar'
 import VNDFormat from '../../untils/CurrencyFormat'
 import { FaBell, FaCartPlus, FaUser } from 'react-icons/fa'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../../components/Footer/Footer'
 
 const Products = () => {
     const [data, setData] = useState([]);
+    const dispatch = useDispatch();
+    
     useEffect(() => {
         axios.get('http://localhost:3000/products')
         .then(res => {
@@ -16,6 +20,14 @@ const Products = () => {
         })
         .catch(error => console.log(error));
     },[]);
+
+    const addToCart = (item) => {
+        console.log("item",item);
+        dispatch({
+              type: 'ADD_PRODUCT',
+              data: item
+            });
+    }
     return (
         <div>
             <Navbar/>
@@ -289,7 +301,7 @@ const Products = () => {
                                                 <div class="product-card-info">
                                                     <div class="product-btn">
                                                         <Link to={`/Detail/${e.id}`} class="btn-flat btn-hover btn-shop-now">shop now</Link>
-                                                        <button class="btn-flat btn-hover btn-cart-add">
+                                                        <button onClick={() => addToCart(e)} class="btn-flat btn-hover btn-cart-add">
                                                             <i class='bx bxs-cart-add'></i>
                                                         </button>
                                                         <button class="btn-flat btn-hover btn-cart-add">
@@ -325,67 +337,7 @@ const Products = () => {
                     </div>
                 </div>
             </div>
-            <footer className="bg-second">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">Products</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">services</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">support</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6 col-sm-12">
-                            <div className="contact">
-                                <h3 className="contact-header">
-                                    ATShop
-                                </h3>
-                                <ul className="contact-socials">
-                                    <li><a href="#">
-                                        <i className='bx bxl-facebook-circle'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-instagram-alt'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-youtube'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-twitter'></i>
-                                    </a></li>
-                                </ul>
-                            </div>
-                            <div className="subscribe">
-                                <input type="email" placeholder="ENTER YOUR EMAIL" />
-                                <button>subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer/>
         </div>
     )
 }
