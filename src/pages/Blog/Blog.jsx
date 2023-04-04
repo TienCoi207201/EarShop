@@ -1,11 +1,10 @@
 import React from 'react'
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import Navbar from '../../components/Navbar/Navbar';
-import Anh10 from '../../image/JBL_Quantum400_Lifestyle1.png'
-import Anh11 from '../../image/JBL_TUNE220TWS_Lifestyle_black.png'
-
+import Footer from '../../components/Footer/Footer'
 
 const Blog = () => {
+    
     return (
         <div>
             <Navbar/>
@@ -75,67 +74,7 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <footer className="bg-second">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">Products</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">services</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">support</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6 col-sm-12">
-                            <div className="contact">
-                                <h3 className="contact-header">
-                                    ATShop
-                                </h3>
-                                <ul className="contact-socials">
-                                    <li><a href="#">
-                                        <i className='bx bxl-facebook-circle'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-instagram-alt'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-youtube'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-twitter'></i>
-                                    </a></li>
-                                </ul>
-                            </div>
-                            <div className="subscribe">
-                                <input type="email" placeholder="ENTER YOUR EMAIL" />
-                                <button>Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer/>
         </div>
     )
 }

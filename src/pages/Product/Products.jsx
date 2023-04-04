@@ -5,20 +5,37 @@ import Navbar from '../../components/Navbar/Navbar'
 import VNDFormat from '../../untils/CurrencyFormat'
 import { FaBell, FaCartPlus, FaUser } from 'react-icons/fa'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { addProduct, addWishlist } from '../../reduces/productSlice'
+import Footer from '../../components/Footer/Footer'
 
 const Products = () => {
     const [data, setData] = useState([]);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         axios.get('http://localhost:3000/products')
-        .then(res => {
-        setData(res.data)
-        console.log(res.data);
-        })
-        .catch(error => console.log(error));
-    },[]);
+            .then(res => {
+                setData(res.data)
+                console.log(res.data);
+            })
+            .catch(error => console.log(error));
+    }, []);
+    const cartItem = useSelector(state => state.productSlice.cart)
+    const addToCart = (item) => () => {
+        console.log("item", item);
+        const cart = [...cartItem,item]
+        // cartItem.push(item)
+        localStorage.setItem('cart',JSON.stringify(cart))
+        dispatch(addProduct(item));
+    }
+
+    const addWishlist = (item) => () => {
+        dispatch(addWishlist(item))
+    }
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="bg-main">
                 <div className="container">
                     <div className="box">
@@ -93,7 +110,7 @@ const Products = () => {
                                     <ul className="filter-list">
                                         <li>
                                             <div className="group-checkbox">
-                                                <input type="checkbox" className="remember1" checked/>
+                                                <input type="checkbox" className="remember1" checked />
                                                 <label for="remember1">
                                                     JBL
                                                     <i className='bx bx-check'></i>
@@ -280,33 +297,33 @@ const Products = () => {
                                 <div className="box">
                                     <div className="row">
                                         {data?.map((e, i) => (
-                                        <div class="col-4 col-md-6 col-sm-12">                                                  
-                                            <div class="product-card">
+                                            <div class="col-4 col-md-6 col-sm-12">
+                                                <div class="product-card">
                                                     <div class="product-card-img">
                                                         <img src={e.link1} alt={e.title} />
                                                         <img src={e.link2} alt={e.title} />
-                                                </div>
-                                                <div class="product-card-info">
-                                                    <div class="product-btn">
-                                                        <Link to={`/Detail/${e.id}`} class="btn-flat btn-hover btn-shop-now">shop now</Link>
-                                                        <button class="btn-flat btn-hover btn-cart-add">
-                                                            <i class='bx bxs-cart-add'></i>
-                                                        </button>
-                                                        <button class="btn-flat btn-hover btn-cart-add">
-                                                            <i class='bx bxs-heart'></i>
-                                                        </button>
                                                     </div>
-                                                    <div class="product-card-name">
-                                                        {e.name}
-                                                    </div>
-                                                    <div class="product-card-price">
-                                                        <span><del>{VNDFormat(e.oldPrice)}</del></span>
-                                                        <span class="curr-price">{VNDFormat(e.newPrice)}</span>
+                                                    <div class="product-card-info">
+                                                        <div class="product-btn">
+                                                            <Link to={`/Detail/${e.id}`} class="btn-flat btn-hover btn-shop-now">shop now</Link>
+                                                            <button onClick={addToCart(e)} class="btn-flat btn-hover btn-cart-add">
+                                                                <i class='bx bxs-cart-add'></i>
+                                                            </button>
+                                                            <button onClick={addWishlist(e)} class="btn-flat btn-hover btn-cart-add">
+                                                                <i class='bx bxs-heart'></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="product-card-name">
+                                                            {e.name}
+                                                        </div>
+                                                        <div class="product-card-price">
+                                                            <span><del>{VNDFormat(e.oldPrice)}</del></span>
+                                                            <span class="curr-price">{VNDFormat(e.newPrice)}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        ))}     
+                                        ))}
                                     </div>
                                 </div>
                                 <div className="box">
@@ -325,67 +342,7 @@ const Products = () => {
                     </div>
                 </div>
             </div>
-            <footer className="bg-second">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">Products</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">services</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">support</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6 col-sm-12">
-                            <div className="contact">
-                                <h3 className="contact-header">
-                                    ATShop
-                                </h3>
-                                <ul className="contact-socials">
-                                    <li><a href="#">
-                                        <i className='bx bxl-facebook-circle'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-instagram-alt'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-youtube'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-twitter'></i>
-                                    </a></li>
-                                </ul>
-                            </div>
-                            <div className="subscribe">
-                                <input type="email" placeholder="ENTER YOUR EMAIL" />
-                                <button>subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

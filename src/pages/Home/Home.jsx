@@ -1,25 +1,41 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../../App.css'
 import Navbar from '../../components/Navbar/Navbar';
 import VNDFormat from '../../untils/CurrencyFormat';
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct } from '../../reduces/productSlice';
 
 
 const Home = () => {
     const [data, setData] = useState([]);
+
+    const dispatch = useDispatch()
+    const cartItem = useSelector(state => state.productSlice.cart)
+    console.log("itemmmmmmmmm:", cartItem)
+    
+    const addToCart = (item)=>{
+        const cart = [...cartItem,item]
+        // cartItem.push(item)
+        localStorage.setItem('cart',JSON.stringify(cart))
+        dispatch(addProduct(item))
+    }
+
+    useEffect(()=>{
+        localStorage.setItem('cart',JSON.stringify(cartItem))
+    },[])
     useEffect(() => {
         axios.get('http://localhost:3000/products')
             .then(res => {
-            setData(res.data)
-            console.log(res.data);
+                setData(res.data)
             })
             .catch(error => console.log(error));
     }, []);
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <div className="hero">
                 <div className="slider">
                     <div className="container">
@@ -33,7 +49,7 @@ const Home = () => {
                                         Next-gen design
                                     </h2>
                                     <p className="top-down trans-delay-0-4">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.
+                                        JBL nổi tiếng với các sản phẩm âm thanh chất lượng, mới đây hãng vừa cho ra mắt mẫu tai nghe mới - JBL Tune 750BTNC. Tai nghe JBL Tune 750BTNC với thiết kế chụp tai cùng âm thanh chất lượng hứa hẹn mang đến trải nghiệm ấn tượng cho người dùng.
                                     </p>
                                     <div className="top-down trans-delay-0-6">
                                         <button className="btn-flat btn-hover">
@@ -107,8 +123,6 @@ const Home = () => {
                 </div>
             </div>
 
-
-
             <div className="promotion">
                 <div className="row">
                     <div className="col-4 col-md-12 col-sm-12">
@@ -146,8 +160,72 @@ const Home = () => {
                         <h2>Latest product</h2>
                     </div>
                     <div className="row">
+                        {data?.map((e) => {
+                           
+                            return (
+                                <div key={e.id} className="col-3 col-md-6 col-sm-12">
+                                <div className="product-card">
+                                    <div className="product-card-img">
+                                        <img src={e.link1} alt={e.title} />
+                                        <img src={e.link2} alt={e.title} />
+                                    </div>
+                                    <div className="product-card-info">
+                                        <div className="product-btn">
+                                            <button className="btn-flat btn-hover btn-shop-now">Shop now</button>
+                                            <button onClick={()=>addToCart(e)} className="btn-flat btn-hover btn-cart-add">
+                                                <FaCartPlus />
+                                            </button>
+                                            <button className="btn-flat btn-hover btn-cart-add">
+                                                <FaHeart />
+                                            </button>
+                                        </div>
+                                        <div className="product-card-name">
+                                            {e.name}
+                                        </div>
+                                        <div className="product-card-price">
+                                            <span><del>{VNDFormat(e.oldPrice)}</del></span>
+                                            <span className="curr-price">{VNDFormat(e.newPrice)}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            )
+                        }).slice(0, 8)}
+                    </div>
+
+                    <div className="section-footer">
+                        <a href="./products.html" className="btn-flat btn-hover">view all</a>
+                    </div>
+                </div>
+            </div>
+            <div className="bg-second">
+                <div className="section container">
+                    <div className="row">
+                        <div className="col-4 col-md-4">
+                            <div className="sp-item-img">
+                                <img src={`${require("../../image/JBL_TUNE220TWS_ProductImage_Pink_ChargingCaseOpen.png")}`} alt="" />
+                            </div>
+                        </div>
+                        <div className="col-7 col-md-8">
+                            <div className="sp-item-info">
+                                <div className="sp-item-name">JBL Tune 220TWS</div>
+                                <p className="sp-item-description">
+                                    Thị trường tai nghe không dây đang ngày càng trở nên đa dạng hơn và mang những sản phẩm hiện đại hơn. Gần đây nhất, "ông lớn" trong lĩnh vực âm thanh JBL cũng đã gia nhập thị trường này với sản phẩm tai nghe không dây JBL Tune 220TWS. Với âm thanh mạnh mẽ, sử dụng dài lâu và có mức giá rẻ, JBL Tune 220TWS hứa hẹn sẽ gây chú ý mọi tín đồ công nghệ.
+                                </p>
+                                <button className="btn-flat btn-hover">shop now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="section">
+                <div className="container">
+                    <div className="section-header">
+                        <h2>Best selling</h2>
+                    </div>
+                    <div className="row">
                         {data?.map((e, i) => (
-                            <div className="col-3 col-md-6 col-sm-12">
+                            <div key={e.id} className="col-3 col-md-6 col-sm-12">
                                 <div className="product-card">
                                     <div className="product-card-img">
                                         <img src={e.link1} alt={e.title} />
@@ -173,68 +251,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                        )).slice(0,8)}
-                    </div>
-
-                    <div className="section-footer">
-                        <a href="./products.html" className="btn-flat btn-hover">view all</a>
-                    </div>
-                </div>
-            </div>
-            <div className="bg-second">
-                <div className="section container">
-                    <div className="row">
-                        <div className="col-4 col-md-4">
-                            <div className="sp-item-img">
-                                <img src={`${require("../../image/JBL_TUNE220TWS_ProductImage_Pink_ChargingCaseOpen.png")}`} alt="" />
-                            </div>
-                        </div>
-                        <div className="col-7 col-md-8">
-                            <div className="sp-item-info">
-                                <div className="sp-item-name">JBL TUNE 750TNC</div>
-                                <p className="sp-item-description">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dignissimos itaque et eaque quod harum vero autem? Reprehenderit enim non voluptate! Qui provident modi est non eius ratione, debitis iure.
-                                </p>
-                                <button className="btn-flat btn-hover">shop now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2>Best selling</h2>
-                    </div>
-                    <div className="row">
-                        {data?.map((e, i) => (
-                            <div className="col-3 col-md-6 col-sm-12">
-                                <div className="product-card">
-                                    <div className="product-card-img">
-                                        <img src={e.link1} alt={e.title} />
-                                        <img src={e.link2} alt={e.title} />
-                                    </div>
-                                    <div className="product-card-info">
-                                        <div className="product-btn">
-                                            <button className="btn-flat btn-hover btn-shop-now">Shop now</button>
-                                            <button className="btn-flat btn-hover btn-cart-add">
-                                                <FaCartPlus />
-                                            </button>
-                                            <button className="btn-flat btn-hover btn-cart-add">
-                                                <FaHeart />
-                                            </button>
-                                        </div>
-                                        <div className="product-card-name">
-                                            {e.name}
-                                        </div>
-                                        <div className="product-card-price">
-                                            <span><del>{e.oldPrice}</del></span>
-                                            <span className="curr-price">{e.newPrice}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )).slice(0,8)}
+                        )).slice(0, 8)}
                     </div>
                     <div className="section-footer">
                         <a href="./products.html" className="btn-flat btn-hover">view all</a>
@@ -279,70 +296,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <footer className="bg-second">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">Products</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">services</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6">
-                            <h3 className="footer-head">support</h3>
-                            <ul className="menu">
-                                <li><a href="#">Help center</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">product help</a></li>
-                                <li><a href="#">warranty</a></li>
-                                <li><a href="#">order status</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-3 col-md-6 col-sm-12">
-                            <div className="contact">
-                                <h3 className="contact-header">
-                                    ATShop
-                                </h3>
-                                <ul className="contact-socials">
-                                    <li><a href="#">
-                                        <i className='bx bxl-facebook-circle'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-instagram-alt'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-youtube'></i>
-                                    </a></li>
-                                    <li><a href="#">
-                                        <i className='bx bxl-twitter'></i>
-                                    </a></li>
-                                </ul>
-                            </div>
-                            <div className="subscribe">
-                                <input type="email" placeholder="ENTER YOUR EMAIL" />
-                                <button>Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </>
     )
-  
+
 }
 
 export default Home

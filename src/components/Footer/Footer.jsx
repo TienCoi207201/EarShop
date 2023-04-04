@@ -1,47 +1,72 @@
-// import React from 'react'
-// import '../Footer/Footer.css'
-// import Logo from './../../image/logo.png'
+import React from 'react'
+import '../Footer/Footer.css'
 
-// const Footer = () => {
-//   return (
-//     <div>
-//         <div className="footer">
-//             <div className="box">
-//               <div className="logo">
-//                 <img src={Logo} alt=''/>
-//               </div>
-//               <p>Cung cấp sản phẩm với chất lượng an toàn cho quý khách</p>
-//             </div>
-//             <div className="box">
-//               <h3>NỘI DUNG</h3>
-//               <ul className="quick-menu">
-//                 <div className="item">
-//                   <a href="">Trang chủ</a>
-//                 </div>
-//                 <div className="item">
-//                   <a href="">Sản phẩm</a>
-//                 </div>
-//                 <div className="item">
-//                   <a href="">Blog</a>
-//                 </div>
-//                 <div className="item">
-//                   <a href="">Liên hệ</a>
-//                 </div>
-//                 <div className="item">
-//                   <a href="">Khuyến mãi</a>
-//                 </div>
-//               </ul>
-//             </div>
-//             <div className="box">
-//               <h3>LIÊN HỆ</h3>
-//               <form action=''>
-//                 <input type="text" placeholder='Địa chỉ email'/>
-//                 <button>Nhận tin</button>
-//               </form>
-//             </div>
-//           </div>
-//     </div>
-//   )
-// }
+const Footer = () => {
+  return (
+    <div>
+        <footer className="bg-second">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-3 col-md-6">
+                            <h3 className="footer-head">Products</h3>
+                            <ul className="menu">
+                                <li><a href="#">Help center</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">product help</a></li>
+                                <li><a href="#">warranty</a></li>
+                                <li><a href="#">order status</a></li>
+                            </ul>
+                        </div>
+                        <div className="col-3 col-md-6">
+                            <h3 className="footer-head">services</h3>
+                            <ul className="menu">
+                                <li><a href="#">Help center</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">product help</a></li>
+                                <li><a href="#">warranty</a></li>
+                                <li><a href="#">order status</a></li>
+                            </ul>
+                        </div>
+                        <div className="col-3 col-md-6">
+                            <h3 className="footer-head">support</h3>
+                            <ul className="menu">
+                                <li><a href="#">Help center</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">product help</a></li>
+                                <li><a href="#">warranty</a></li>
+                                <li><a href="#">order status</a></li>
+                            </ul>
+                        </div>
+                        <div className="col-3 col-md-6 col-sm-12">
+                            <div className="contact">
+                                <h3 className="contact-header">
+                                    ATShop
+                                </h3>
+                                <ul className="contact-socials">
+                                    <li><a href="#">
+                                        <i className='bx bxl-facebook-circle'></i>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <i className='bx bxl-instagram-alt'></i>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <i className='bx bxl-youtube'></i>
+                                    </a></li>
+                                    <li><a href="#">
+                                        <i className='bx bxl-twitter'></i>
+                                    </a></li>
+                                </ul>
+                            </div>
+                            <div className="subscribe">
+                                <input type="email" placeholder="ENTER YOUR EMAIL" />
+                                <button>Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    </div>
+  )
+}
 
-// export default Footer
+export default Footer
