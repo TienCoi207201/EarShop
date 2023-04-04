@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import VNDFormat from '../../untils/CurrencyFormat'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
-import { removeCart, changeQuantity } from '../../reduces/productSlice'
+import { removeCart, changeQuantity, payment } from '../../reduces/productSlice'
+import { useNavigate } from 'react-router'
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.productSlice.cart)
+  const navigate = useNavigate()
   const removeItem = (e) => () => {
     dispatch(removeCart(e))
   }
@@ -23,6 +25,16 @@ const Cart = () => {
     } else {
       dispatch(changeQuantity({ ...item, quantity: item?.quantity >= 1 ? Number(item?.quantity) - 1 : 0 }));
     }
+  }
+
+  const totalPrice = cartData.reduce((total, item) => {
+    return total + item?.quantity * Number(item?.newPrice)
+  }, 0)
+
+  const pay = () => {
+    alert("Thanh toán thành công");
+    dispatch(payment());
+    navigate('/')
   }
   return (
     <div className="small-container cart-page">
@@ -74,8 +86,8 @@ const Cart = () => {
                 </tbody>
               </table>
               <div className='cart_button'>
-                <button type="submit" name="update" className="update-cart">Cập nhật</button>
-                <button type="submit" name="checkout" className="check-out-cart">Thanh toán</button>
+                <p>{VNDFormat(totalPrice)}</p>
+                <button onClick={pay} type="submit" name="checkout" className="check-out-cart">Thanh toán</button>
               </div>
             </div>
           </div>

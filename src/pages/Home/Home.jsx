@@ -6,7 +6,7 @@ import VNDFormat from '../../untils/CurrencyFormat';
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../../reduces/productSlice';
+import { addProduct, addWishlist } from '../../reduces/productSlice';
 
 
 const Home = () => {
@@ -16,11 +16,15 @@ const Home = () => {
     const cartItem = useSelector(state => state.productSlice.cart)
     console.log("itemmmmmmmmm:", cartItem)
     
-    const addToCart = (item)=>{
+    const addToCart = (item) => {
         const cart = [...cartItem,item]
         // cartItem.push(item)
         localStorage.setItem('cart',JSON.stringify(cart))
         dispatch(addProduct(item))
+    }
+
+    const addToWishlist = (item) => () => {
+        dispatch(addWishlist(item))
     }
 
     useEffect(()=>{
@@ -161,7 +165,6 @@ const Home = () => {
                     </div>
                     <div className="row">
                         {data?.map((e) => {
-                           
                             return (
                                 <div key={e.id} className="col-3 col-md-6 col-sm-12">
                                 <div className="product-card">
@@ -175,7 +178,7 @@ const Home = () => {
                                             <button onClick={()=>addToCart(e)} className="btn-flat btn-hover btn-cart-add">
                                                 <FaCartPlus />
                                             </button>
-                                            <button className="btn-flat btn-hover btn-cart-add">
+                                            <button onClick={addToWishlist(e)} className="btn-flat btn-hover btn-cart-add">
                                                 <FaHeart />
                                             </button>
                                         </div>
@@ -234,10 +237,10 @@ const Home = () => {
                                     <div className="product-card-info">
                                         <div className="product-btn">
                                             <button className="btn-flat btn-hover btn-shop-now">Shop now</button>
-                                            <button className="btn-flat btn-hover btn-cart-add">
+                                            <button onClick={() => addToCart(e)} className="btn-flat btn-hover btn-cart-add">
                                                 <FaCartPlus />
                                             </button>
-                                            <button className="btn-flat btn-hover btn-cart-add">
+                                            <button onClick={addToWishlist(e)} className="btn-flat btn-hover btn-cart-add">
                                                 <FaHeart />
                                             </button>
                                         </div>

@@ -23,14 +23,12 @@ const Products = () => {
     }, []);
     const cartItem = useSelector(state => state.productSlice.cart)
     const addToCart = (item) => () => {
-        console.log("item", item);
         const cart = [...cartItem,item]
-        // cartItem.push(item)
         localStorage.setItem('cart',JSON.stringify(cart))
         dispatch(addProduct(item));
     }
 
-    const addWishlist = (item) => () => {
+    const addToWishlist = (item) => () => {
         dispatch(addWishlist(item))
     }
     return (
@@ -309,7 +307,7 @@ const Products = () => {
                                                             <button onClick={addToCart(e)} class="btn-flat btn-hover btn-cart-add">
                                                                 <i class='bx bxs-cart-add'></i>
                                                             </button>
-                                                            <button onClick={addWishlist(e)} class="btn-flat btn-hover btn-cart-add">
+                                                            <button onClick={addToWishlist(e)} class="btn-flat btn-hover btn-cart-add">
                                                                 <i class='bx bxs-heart'></i>
                                                             </button>
                                                         </div>

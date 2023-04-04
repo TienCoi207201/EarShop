@@ -21,7 +21,17 @@ export const productSlice = createSlice({
             }
         },
         addWishlist: (state, action) => {
-            state.wishlist.push(action.payload)
+            const isExist = state.wishlist.find(item => item.id === action.payload.id)
+            if (isExist) {
+                state.wishlist = state.wishlist.map(item => {
+                    if (item.id === action.payload.id) {
+                        alert("Sản phẩm đã tồn tại trong wishlist");
+                    }
+                    return item;
+                })
+            } else {
+                state.wishlist.push(action.payload)
+            }
         },
         removeCart: (state, action) => {
             let items = JSON.parse(localStorage.getItem('cart'))
@@ -38,8 +48,12 @@ export const productSlice = createSlice({
                 return item;
             });
         },
+        payment: (state, action) => {
+            state.cart = [];
+            localStorage.clear();
+        }
     }
 })
 
-export const { addProduct, addWishlist, removeCart, changeQuantity } = productSlice.actions;
+export const { addProduct, addWishlist, removeCart, changeQuantity, payment } = productSlice.actions;
 export default productSlice.reducer;
