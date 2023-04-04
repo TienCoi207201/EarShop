@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './index.css';
-import App from './AppContainer';
 import Home from './pages/Home/Home'
 import Blog from './pages/Blog/Blog';
 import Products from './pages/Product/Products';
 import Contact from './pages/Contact/Contact';
 import Detail from './pages/Product-detail/Product-detail'
-//import Cart from './pages/Cart/Cart';
+import Cart from './pages/Cart/Cart';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 // import reportWebVitals from './reportWebVitals';
 
@@ -19,9 +19,10 @@ export default function Routers() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Products" element={<Products />} />
+          <Route path="/Wishlist" element={<Wishlist />} />
           <Route path='/Blog' element={<Blog />} />
           <Route path='/Contact' element={<Contact />} />
-          {/* <Route path='/Cart' element={<Cart />} /> */}
+          <Route path='/Cart' element={<Cart />} />
           <Route path='/Detail/:DetailId' element={<Detail />} />
         </Routes>
       </BrowserRouter>
