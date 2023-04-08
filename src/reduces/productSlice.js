@@ -4,7 +4,8 @@ export const productSlice = createSlice({
     name: 'productSlice',
     initialState: {
         cart: localStorage.getItem('cart') != null ? JSON.parse(localStorage.getItem('cart')) : [],
-        wishlist: localStorage.getItem('wishlist') != null ? JSON.parse(localStorage.getItem('wishlist')) : []
+        wishlist: localStorage.getItem('wishlist') != null ? JSON.parse(localStorage.getItem('wishlist')) : [],
+        users: []
     },
     reducers: {
         addProduct: (state, action) => {
@@ -51,9 +52,12 @@ export const productSlice = createSlice({
         payment: (state, action) => {
             state.cart = [];
             localStorage.clear();
+        },
+        addUser: (state, action) => {
+            state.users = state.users.push(action.payload)
         }
     }
 })
 
-export const { addProduct, addWishlist, removeCart, changeQuantity, payment } = productSlice.actions;
+export const { addProduct, addWishlist, removeCart, changeQuantity, payment, addUser } = productSlice.actions;
 export default productSlice.reducer;

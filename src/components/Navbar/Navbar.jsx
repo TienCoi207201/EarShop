@@ -67,7 +67,7 @@ const Navbar = () => {
                                 <li><a href="#"><i className='bx bx-user-circle'></i></a></li>
                                 <li>
                                     <Link to={'/Cart'}><i className='bx bx-cart'></i></Link>
-                                    <p id='cart-length'>{cartData.length}</p>
+                                    {cartData.length >= 1 && <p id='cart-length'>{cartData.length}</p>}
                                 </li>
                             </ul>
                         </div>

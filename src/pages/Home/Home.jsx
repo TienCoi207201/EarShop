@@ -5,16 +5,17 @@ import Navbar from '../../components/Navbar/Navbar';
 import VNDFormat from '../../untils/CurrencyFormat';
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom"
+import fakeData from '../../db.json'
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, addWishlist } from '../../reduces/productSlice';
 
 
 const Home = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([...fakeData]);
 
     const dispatch = useDispatch()
     const cartItem = useSelector(state => state.productSlice.cart)
-    console.log("itemmmmmmmmm:", cartItem)
+    // console.log("item:", cartItem)
     
     const addToCart = (item) => {
         const cart = [...cartItem,item]
@@ -30,13 +31,13 @@ const Home = () => {
     useEffect(()=>{
         localStorage.setItem('cart',JSON.stringify(cartItem))
     },[])
-    useEffect(() => {
-        axios.get('http://localhost:3000/products')
-            .then(res => {
-                setData(res.data)
-            })
-            .catch(error => console.log(error));
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000/products')
+    //         .then(res => {
+    //             setData(res.data)
+    //         })
+    //         .catch(error => console.log(error));
+    // }, []);
     return (
         <>
             <Navbar />

@@ -67,7 +67,7 @@ const Cart = () => {
 
                           <button onClick={removeItem(item)} className="cart_remove">Xóa</button>
                         </td>
-                        <td> <span className="h3">{VNDFormat(item?.newPrice)} </span> </td>
+                        <td><span className="h3">{VNDFormat(item?.newPrice)}</span></td>
                         <td>
                           <div className='js-qty'>
                             <div className='decrease' onClick={onChangeQuantity('reduce', item)}>-</div>

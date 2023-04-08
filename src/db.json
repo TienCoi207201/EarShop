@@ -1,5 +1,5 @@
-{
-  "products": [
+
+[
     {
       "id": 1,
       "title": "JBL JR 310BT",
@@ -117,31 +117,5 @@
       "description": "Tai nghe là một thiết bị không thể thiếu đối với một chiếc điện thoại. Chọn địa điểm mua uy tín, giá cả phải chăng là những yếu tố bạn cần đặc biệt quan tâm. Bởi trên thị trường có rất nhiều cửa hàng bán về tai nghe nhưng không phải cửa hàng nào cũng mang lại chất lượng tốt. Đối với tai nghe, bạn nên chọn những địa điểm chuyên về tai nghe nghe nhạc, thiết bị âm thanh để mang lại trải nghiệm tốt hơn.",
       "quantity": 1
     }
-  ],
-  "users": [
-    {
-      "username": "luuvantien",
-      "password": "luuvantien",
-      "role": "admin"
-    },
-    {
-      "username": "",
-      "password": "",
-      "role": "user"
-    },
-    {
-      "username": "",
-      "password": "",
-      "role": "staff"
-    },
-    {
-      "username": "tien",
-      "password": "luuvantien",
-      "role": "1",
-      "id": "5"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
-}
+]
+  

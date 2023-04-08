@@ -5,22 +5,23 @@ import Navbar from '../../components/Navbar/Navbar'
 import VNDFormat from '../../untils/CurrencyFormat'
 import { FaBell, FaCartPlus, FaUser } from 'react-icons/fa'
 import axios from 'axios'
+import fakeData from '../../db.json'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProduct, addWishlist } from '../../reduces/productSlice'
 import Footer from '../../components/Footer/Footer'
 
 const Products = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([...fakeData]);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        axios.get('http://localhost:3000/products')
-            .then(res => {
-                setData(res.data)
-                console.log(res.data);
-            })
-            .catch(error => console.log(error));
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000/products')
+    //         .then(res => {
+    //             setData(res.data)
+    //             console.log(res.data);
+    //         })
+    //         .catch(error => console.log(error));
+    // }, []);
     const cartItem = useSelector(state => state.productSlice.cart)
     const addToCart = (item) => () => {
         const cart = [...cartItem,item]
