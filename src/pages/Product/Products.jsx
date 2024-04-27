@@ -7,12 +7,15 @@ import { FaBell, FaCartPlus, FaUser } from 'react-icons/fa'
 import axios from 'axios'
 import fakeData from '../../db.json'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProduct, addWishlist } from '../../reduces/productSlice'
+import { addProduct, addWishlist, filterProduct } from '../../reduces/productSlice'
 import Footer from '../../components/Footer/Footer'
 
 const Products = () => {
     const [data, setData] = useState([...fakeData]);
     const dispatch = useDispatch();
+    useEffect(() => {
+        localStorage.setItem('product', JSON.stringify(data))
+    }, [])
 
     // useEffect(() => {
     //     axios.get('http://localhost:3000/products')
@@ -31,6 +34,11 @@ const Products = () => {
 
     const addToWishlist = (item) => () => {
         dispatch(addWishlist(item))
+    }
+
+    const handleFilterProduct = (e) => {
+        dispatch(filterProduct(e))
+        console.log(e)
     }
     return (
         <div>
@@ -109,7 +117,7 @@ const Products = () => {
                                     <ul className="filter-list">
                                         <li>
                                             <div className="group-checkbox">
-                                                <input type="checkbox" className="remember1" checked />
+                                                <input onChange={handleFilterProduct('JBL')} type="checkbox" className="remember1"/>
                                                 <label for="remember1">
                                                     JBL
                                                     <i className='bx bx-check'></i>
