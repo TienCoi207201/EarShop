@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const productSlice = createSlice({
     name: 'productSlice',
     initialState: {
-        product: localStorage.getItem('product') != null ? JSON.parse(localStorage.getItem('product')) : [],
+        // product: localStorage.getItem('product') != null ? JSON.parse(localStorage.getItem('product')) : [],
         cart: localStorage.getItem('cart') != null ? JSON.parse(localStorage.getItem('cart')) : [],
         wishlist: localStorage.getItem('wishlist') != null ? JSON.parse(localStorage.getItem('wishlist')) : [],
         users: []
     },
     reducers: {
-        filterProduct: (state, action) => {
-            console.log('action', action.payload.brand)
-            state.product = state.product.map(item => item.brand === action.payload.brand)
-        },
+        // filterProduct: (state, action) => {
+        //     console.log('action', action.payload.brand)
+        //     state.product = state.product.map(item => item.brand === action.payload.brand)
+        // },
         addProduct: (state, action) => {
             const isExist = state.cart.find(item => item.id === action.payload.id);
             if (isExist) {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Checkbox } from 'antd'
 import { Link } from "react-router-dom"
 import '../../App.css'
 import Navbar from '../../components/Navbar/Navbar'
@@ -10,12 +11,42 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProduct, addWishlist, filterProduct } from '../../reduces/productSlice'
 import Footer from '../../components/Footer/Footer'
 
+
 const Products = () => {
     const [data, setData] = useState([...fakeData]);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const [listSelected, setListSelected] = useState([]);
+    const handleOnChange = (id) => {
+        const isChecked = listSelected.includes(id);
+        setListSelected(prev => (
+            isChecked
+                ? prev.filter(id => id !== id) 
+                : [...prev, id]
+        ));
+        const filterData = data.filter(id === id)
+        setData(filterData)
+    };
+    const brand = [
+        {
+            id: 1,
+            name: 'JBL'
+        },
+        {
+            id: 2,
+            name: 'Ear Case'
+        },
+        {
+            id: 3,
+            name: 'Logitech'
+        },
+        {
+            id: 4,
+            name: 'ASUS'
+        }
+    ]
     useEffect(() => {
         localStorage.setItem('product', JSON.stringify(data))
-    }, [])
+    }, [data])
 
     // useEffect(() => {
     //     axios.get('http://localhost:3000/products')
@@ -26,9 +57,10 @@ const Products = () => {
     //         .catch(error => console.log(error));
     // }, []);
     const cartItem = useSelector(state => state.productSlice.cart)
+    const product = useSelector(state => state.productSlice.product)
     const addToCart = (item) => () => {
-        const cart = [...cartItem,item]
-        localStorage.setItem('cart',JSON.stringify(cart))
+        const cart = [...cartItem, item]
+        localStorage.setItem('cart', JSON.stringify(cart))
         dispatch(addProduct(item));
     }
 
@@ -37,7 +69,7 @@ const Products = () => {
     }
 
     const handleFilterProduct = (e) => {
-        dispatch(filterProduct(e))
+        // dispatch(filterProduct(e))
         console.log(e)
     }
     return (
@@ -115,51 +147,20 @@ const Products = () => {
                                         Brands
                                     </span>
                                     <ul className="filter-list">
-                                        <li>
-                                            <div className="group-checkbox">
-                                                <input onChange={handleFilterProduct('JBL')} type="checkbox" className="remember1"/>
-                                                <label for="remember1">
-                                                    JBL
-                                                    <i className='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="group-checkbox">
-                                                <input type="checkbox" className="remember2" />
-                                                <label for="remember2">
-                                                    Beat
-                                                    <i className='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="group-checkbox">
-                                                <input type="checkbox" className="remember3" />
-                                                <label for="remember3">
-                                                    Logitech
-                                                    <i className='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="group-checkbox">
-                                                <input type="checkbox" className="remember4" />
-                                                <label for="remember4">
-                                                    Samsung
-                                                    <i className='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="group-checkbox">
-                                                <input type="checkbox" className="remember5" />
-                                                <label for="remember5">
-                                                    Sony
-                                                    <i className='bx bx-check'></i>
-                                                </label>
-                                            </div>
-                                        </li>
+                                        {brand && brand.map((item, index) => {
+                                            const isChecked = listSelected?.includes(item.id);
+                                            console.log(isChecked)
+                                            return (
+                                                <li key={item.id}>
+                                                    <div className="group-checkbox">
+                                                        <input checked={isChecked} onChange={() => handleOnChange(item.id)} type="checkbox" className="remember1" />
+                                                        <label for="remember1">
+                                                            {item.name}
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            )
+                                        })}
                                     </ul>
                                 </div>
                                 <div className="box">
