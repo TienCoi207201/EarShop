@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import Navbar from "../../components/Navbar/Navbar"
 import { Link } from 'react-router-dom'
+import fakeData from '../../db'
 const ProductDetail = () => {
     const [data, setData] = useState([]);
     const {DetailId} = useParams();
-    useEffect(() => {
-        axios.get(`http://localhost:3000/products?id=${DetailId}`)
-            .then(res => {
-                setData(res.data)
-                console.log(res.data);
-            })
-            .catch(er => console.log(er));
-    },[]);
+    const dispatch = useDispatch()
+    
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:3000/products?id=${DetailId}`)
+    //         .then(res => {
+    //             setData(res.data)
+    //             console.log(res.data);
+    //         })
+    //         .catch(er => console.log(er));
+    // },[]);
     return (
         <div>
             <Navbar />

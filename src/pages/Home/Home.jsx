@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import VNDFormat from '../../untils/CurrencyFormat';
 import { FaCalendarAlt, FaBell, FaUser, FaCartPlus, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom"
-import fakeData from '../../db.json'
+import { fakeData } from '../../db'
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, addWishlist } from '../../reduces/productSlice';
 

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fakeData } from "../db"; 
 
 export const productSlice = createSlice({
     name: 'productSlice',
@@ -6,13 +7,19 @@ export const productSlice = createSlice({
         // product: localStorage.getItem('product') != null ? JSON.parse(localStorage.getItem('product')) : [],
         cart: localStorage.getItem('cart') != null ? JSON.parse(localStorage.getItem('cart')) : [],
         wishlist: localStorage.getItem('wishlist') != null ? JSON.parse(localStorage.getItem('wishlist')) : [],
-        users: []
+        users: [],
+        filterData: []
     },
     reducers: {
-        // filterProduct: (state, action) => {
-        //     console.log('action', action.payload.brand)
-        //     state.product = state.product.map(item => item.brand === action.payload.brand)
-        // },
+        filterProduct: (state, action) => {
+            const filterState = [...state.cart]
+            try {
+                const filterData = filterState.filter(item => item.brand == action.payload)
+                state.filterData = filterData
+            } catch (error) {
+                return error
+            }
+        },
         addProduct: (state, action) => {
             const isExist = state.cart.find(item => item.id === action.payload.id);
             if (isExist) {

@@ -5,8 +5,8 @@ import '../../App.css'
 import Navbar from '../../components/Navbar/Navbar'
 import VNDFormat from '../../untils/CurrencyFormat'
 import { FaBell, FaCartPlus, FaUser } from 'react-icons/fa'
-import axios from 'axios'
-import fakeData from '../../db.json'
+// import axios from 'axios'
+import { fakeData } from '../../db'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProduct, addWishlist, filterProduct } from '../../reduces/productSlice'
 import Footer from '../../components/Footer/Footer'
@@ -14,48 +14,24 @@ import Footer from '../../components/Footer/Footer'
 
 const Products = () => {
     const [data, setData] = useState([...fakeData]);
+    const [ brandItem, setBrandItem ] = useState()
+    const copyData = [...data]
     const dispatch = useDispatch()
-    const [listSelected, setListSelected] = useState([]);
-    const handleOnChange = (id) => {
-        const isChecked = listSelected.includes(id);
-        setListSelected(prev => (
-            isChecked
-                ? prev.filter(id => id !== id) 
-                : [...prev, id]
-        ));
-        const filterData = data.filter(id === id)
-        setData(filterData)
+    const [checkSelected, setCheckSelected] = useState();
+    const handleOnChange = (e) => {
+        // const isChecked = listSelected.includes(id);
+        setCheckSelected([e]);
     };
     const brand = [
-        {
-            id: 1,
-            name: 'JBL'
-        },
-        {
-            id: 2,
-            name: 'Ear Case'
-        },
-        {
-            id: 3,
-            name: 'Logitech'
-        },
-        {
-            id: 4,
-            name: 'ASUS'
-        }
+        'JBL',
+        'Ear Case',
+        'Logitech',
+        'ASUS'
     ]
     useEffect(() => {
-        localStorage.setItem('product', JSON.stringify(data))
+        localStorage.setItem('product', JSON.stringify(copyData))
     }, [data])
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/products')
-    //         .then(res => {
-    //             setData(res.data)
-    //             console.log(res.data);
-    //         })
-    //         .catch(error => console.log(error));
-    // }, []);
     const cartItem = useSelector(state => state.productSlice.cart)
     const product = useSelector(state => state.productSlice.product)
     const addToCart = (item) => () => {
@@ -69,7 +45,8 @@ const Products = () => {
     }
 
     const handleFilterProduct = (e) => {
-        // dispatch(filterProduct(e))
+        dispatch(filterProduct(e))
+        setBrandItem(copyData.filter(item => item.brand == e))
         console.log(e)
     }
     return (
@@ -148,14 +125,13 @@ const Products = () => {
                                     </span>
                                     <ul className="filter-list">
                                         {brand && brand.map((item, index) => {
-                                            const isChecked = listSelected?.includes(item.id);
-                                            console.log(isChecked)
+                                            const isChecked = checkSelected?.includes(item.id)
                                             return (
-                                                <li key={item.id}>
+                                                <li>
                                                     <div className="group-checkbox">
-                                                        <input checked={isChecked} onChange={() => handleOnChange(item.id)} type="checkbox" className="remember1" />
+                                                        <input checked={isChecked} onChange={() => handleOnChange(item)} type="checkbox" className="remember1" />
                                                         <label for="remember1">
-                                                            {item.name}
+                                                            {item}
                                                         </label>
                                                     </div>
                                                 </li>
@@ -304,7 +280,7 @@ const Products = () => {
                                 </div>
                                 <div className="box">
                                     <div className="row">
-                                        {data?.map((e, i) => (
+                                        {copyData?.map((e, i) => (
                                             <div class="col-4 col-md-6 col-sm-12">
                                                 <div class="product-card">
                                                     <div class="product-card-img">
